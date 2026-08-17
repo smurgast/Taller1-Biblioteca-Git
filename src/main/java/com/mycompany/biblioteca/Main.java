@@ -117,4 +117,16 @@ public class Main {
         }
         return null;
     }
+
+    private static void listBooks() {
+        System.out.println("\n-- Listado de libros --");
+        if (books.isEmpty()) {
+            System.out.println("No hay libros registrados.");
+            return;
+        }
+        for (Book b : books) {
+            System.out.println(b);
+        }
+    }
+
 }
