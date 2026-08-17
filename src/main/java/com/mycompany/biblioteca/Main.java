@@ -159,4 +159,18 @@ public class Main {
         if (!author.isBlank()) b.setAuthor(author);
         System.out.println("Libro actualizado con exito.");
     }
+
+    private static void deleteBook() {
+        System.out.print("Ingresa el codigo del libro a eliminar: ");
+        String code = sc.nextLine().trim();
+        Book b = findBookByCode(code);
+        if (b == null) {
+            System.out.println("No se encontro un libro con ese codigo.");
+            return;
+        }
+        books.remove(b);
+        System.out.println("Libro eliminado con exito.");
+    }
+
+
 }
