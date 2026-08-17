@@ -58,4 +58,24 @@ public class Main {
             System.out.println("Cliente encontrado: " + c);
         }
     }
+
+    private static void updateClient() {
+        System.out.print("Ingresa el id del cliente a actualizar: ");
+        String id = sc.nextLine().trim();
+        Client c = findClientById(id);
+        if (c == null) {
+            System.out.println("No se encontro un cliente con ese id.");
+            return;
+        }
+        System.out.print("Nuevo nombre (" + c.getName() + "): ");
+        String name = sc.nextLine().trim();
+        System.out.print("Nuevo telefono (" + c.getPhone() + "): ");
+        String phone = sc.nextLine().trim();
+        System.out.print("Nuevo email (" + c.getEmail() + "): ");
+        String email = sc.nextLine().trim();
+        if (!name.isBlank()) c.setName(name);
+        if (!phone.isBlank()) c.setPhone(phone);
+        if (!email.isBlank()) c.setEmail(email);
+        System.out.println("Cliente actualizado con exito.");
+    }
 }
