@@ -1,10 +1,12 @@
 package com.mycompany.biblioteca;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
+    static ArrayList<Loan> loans = new ArrayList<>();
     static ArrayList<Book> books = new ArrayList<>();
     static ArrayList<Client> clients = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
@@ -172,5 +174,38 @@ public class Main {
         System.out.println("Libro eliminado con exito.");
     }
 
+    private static void createLoan() {
+        System.out.println("\n-- Registrar prestamo --");
+        System.out.print("Id del cliente: ");
+        Client client = findClientById(sc.nextLine().trim());
+        if (client == null) {
+            System.out.println("No se encontro un cliente con ese id.");
+            return;
+        }
+        System.out.print("Codigo del libro: ");
+        Book book = findBookByCode(sc.nextLine().trim());
+        if (book == null) {
+            System.out.println("No se encontro un libro con ese codigo.");
+            return;
+        }
+        if (!book.isAvailable()) {
+            System.out.println("El libro no esta disponible actualmente.");
+            return;
+        }
+        System.out.print("Id del prestamo: ");
+        String loanId = sc.nextLine().trim();
+        loans.add(new Loan(loanId, client, book, LocalDate.now(), "ACTIVO"));
+        book.setAvailable(false);
+        System.out.println("Prestamo registrado con exito.");
+    }
+
+    private static Loan findLoanById(String loanId) {
+        for (Loan l : loans) {
+            if (l.getLoanId().equalsIgnoreCase(loanId)) {
+                return l;
+            }
+        }
+        return null;
+    }
 
 }
