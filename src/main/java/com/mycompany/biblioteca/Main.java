@@ -38,4 +38,14 @@ public class Main {
         }
         return null;
     }
+    private static void listClients() {
+        System.out.println("\n-- Listado de clientes --");
+        if (clients.isEmpty()) {
+            System.out.println("No hay clientes registrados.");
+            return;
+        }
+        for (Client c : clients) {
+            System.out.println(c);
+        }
+    }
 }
