@@ -129,4 +129,14 @@ public class Main {
         }
     }
 
+    private static void searchBookMenu() {
+        System.out.print("Ingresa el codigo del libro a buscar: ");
+        String code = sc.nextLine().trim();
+        Book b = findBookByCode(code);
+        if (b == null) {
+            System.out.println("No se encontro un libro con ese codigo.");
+        } else {
+            System.out.println("Libro encontrado: " + b);
+        }
+    }
 }
