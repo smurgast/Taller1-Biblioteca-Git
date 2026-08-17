@@ -139,4 +139,24 @@ public class Main {
             System.out.println("Libro encontrado: " + b);
         }
     }
+
+    private static void updateBook() {
+        System.out.print("Ingresa el codigo del libro a actualizar: ");
+        String code = sc.nextLine().trim();
+        Book b = findBookByCode(code);
+        if (b == null) {
+            System.out.println("No se encontro un libro con ese codigo.");
+            return;
+        }
+        System.out.print("Nuevo titulo (" + b.getTitle() + "): ");
+        String title = sc.nextLine().trim();
+        System.out.print("Nuevo anio de publicacion (" + b.getPublicationYear() + "): ");
+        String year = sc.nextLine().trim();
+        System.out.print("Nuevo autor (" + b.getAuthor() + "): ");
+        String author = sc.nextLine().trim();
+        if (!title.isBlank()) b.setTitle(title);
+        if (!year.isBlank()) b.setPublicationYear(year);
+        if (!author.isBlank()) b.setAuthor(author);
+        System.out.println("Libro actualizado con exito.");
+    }
 }
