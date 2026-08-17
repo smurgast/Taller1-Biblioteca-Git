@@ -225,4 +225,18 @@ public class Main {
         System.out.println("Devolucion registrada con exito.");
     }
 
+    private static void listActiveLoans() {
+        System.out.println("\n-- Prestamos activos --");
+        boolean found = false;
+        for (Loan l : loans) {
+            if ("ACTIVO".equalsIgnoreCase(l.getStatus())) {
+                System.out.println(l);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No hay prestamos activos.");
+        }
+    }
+
 }
