@@ -208,4 +208,21 @@ public class Main {
         return null;
     }
 
+    private static void returnLoan() {
+        System.out.println("\n-- Registrar devolucion --");
+        System.out.print("Id del prestamo: ");
+        Loan loan = findLoanById(sc.nextLine().trim());
+        if (loan == null) {
+            System.out.println("No se encontro un prestamo con ese id.");
+            return;
+        }
+        if ("DEVUELTO".equalsIgnoreCase(loan.getStatus())) {
+            System.out.println("Ese prestamo ya fue devuelto.");
+            return;
+        }
+        loan.setStatus("DEVUELTO");
+        loan.getBook().setAvailable(true);
+        System.out.println("Devolucion registrada con exito.");
+    }
+
 }
