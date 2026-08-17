@@ -48,4 +48,14 @@ public class Main {
             System.out.println(c);
         }
     }
+    private static void searchClientMenu() {
+        System.out.print("Ingresa el id del cliente a buscar: ");
+        String id = sc.nextLine().trim();
+        Client c = findClientById(id);
+        if (c == null) {
+            System.out.println("No se encontro un cliente con ese id.");
+        } else {
+            System.out.println("Cliente encontrado: " + c);
+        }
+    }
 }
