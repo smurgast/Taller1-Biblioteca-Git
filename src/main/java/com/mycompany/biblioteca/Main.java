@@ -78,4 +78,16 @@ public class Main {
         if (!email.isBlank()) c.setEmail(email);
         System.out.println("Cliente actualizado con exito.");
     }
+
+    private static void deleteClient() {
+        System.out.print("Ingresa el id del cliente a eliminar: ");
+        String id = sc.nextLine().trim();
+        Client c = findClientById(id);
+        if (c == null) {
+            System.out.println("No se encontro un cliente con ese id.");
+            return;
+        }
+        clients.remove(c);
+        System.out.println("Cliente eliminado con exito.");
+    }
 }
