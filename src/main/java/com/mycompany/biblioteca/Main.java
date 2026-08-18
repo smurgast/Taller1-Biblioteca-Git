@@ -12,7 +12,106 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // Aquí irá el menú (Fase 8)
+        int option;
+        do {
+            showMainMenu();
+            System.out.print("Selecciona una opcion: ");
+            option = readInt();
+            switch (option) {
+                case 1 -> clientsMenu();
+                case 2 -> booksMenu();
+                case 3 -> loansMenu();
+                case 0 -> System.out.println("Saliendo del sistema... Hasta pronto.");
+                default -> System.out.println("Opcion invalida, intenta de nuevo.");
+            }
+        } while (option != 0);
+        sc.close();
+    }
+
+    private static void showMainMenu() {
+        System.out.println("\n===== BIBLIOTECA MUNICIPAL DE VALLEDUPAR =====");
+        System.out.println("1. Gestion de Clientes");
+        System.out.println("2. Gestion de Libros");
+        System.out.println("3. Gestion de Prestamos");
+        System.out.println("0. Salir");
+    }
+
+    private static void clientsMenu() {
+        int option;
+        do {
+            System.out.println("\n--- GESTION DE CLIENTES ---");
+            System.out.println("1. Crear cliente");
+            System.out.println("2. Listar clientes");
+            System.out.println("3. Buscar cliente por id");
+            System.out.println("4. Actualizar cliente");
+            System.out.println("5. Eliminar cliente");
+            System.out.println("0. Volver al menu principal");
+            System.out.print("Selecciona una opcion: ");
+            option = readInt();
+            switch (option) {
+                case 1 -> createClient();
+                case 2 -> listClients();
+                case 3 -> searchClientMenu();
+                case 4 -> updateClient();
+                case 5 -> deleteClient();
+                case 0 -> {}
+                default -> System.out.println("Opcion invalida, intenta de nuevo.");
+            }
+        } while (option != 0);
+    }
+
+    private static void booksMenu() {
+        int option;
+        do {
+            System.out.println("\n--- GESTION DE LIBROS ---");
+            System.out.println("1. Crear libro");
+            System.out.println("2. Listar libros");
+            System.out.println("3. Buscar libro por codigo");
+            System.out.println("4. Actualizar libro");
+            System.out.println("5. Eliminar libro");
+            System.out.println("0. Volver al menu principal");
+            System.out.print("Selecciona una opcion: ");
+            option = readInt();
+            switch (option) {
+                case 1 -> createBook();
+                case 2 -> listBooks();
+                case 3 -> searchBookMenu();
+                case 4 -> updateBook();
+                case 5 -> deleteBook();
+                case 0 -> {}
+                default -> System.out.println("Opcion invalida, intenta de nuevo.");
+            }
+        } while (option != 0);
+    }
+
+    private static void loansMenu() {
+        int option;
+        do {
+            System.out.println("\n--- GESTION DE PRESTAMOS ---");
+            System.out.println("1. Registrar prestamo");
+            System.out.println("2. Registrar devolucion");
+            System.out.println("3. Listar prestamos activos");
+            System.out.println("0. Volver al menu principal");
+            System.out.print("Selecciona una opcion: ");
+            option = readInt();
+            switch (option) {
+                case 1 -> createLoan();
+                case 2 -> returnLoan();
+                case 3 -> listActiveLoans();
+                case 0 -> {}
+                default -> System.out.println("Opcion invalida, intenta de nuevo.");
+            }
+        } while (option != 0);
+    }
+
+    private static int readInt() {
+        while (!sc.hasNextInt()) {
+            sc.next();
+            System.out.print("Ingresa un numero valido: ");
+        }
+        int value = sc.nextInt();
+        sc.nextLine();
+        return value;
     }
 
     private static void createClient() {
